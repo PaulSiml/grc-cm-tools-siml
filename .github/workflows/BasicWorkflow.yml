@@ -11,6 +11,7 @@ jobs:
       - name: Print Goodbye
         run: echo "Goodbye World"
   job2:
+    needs: job1
     runs-on: windows-latest
     steps:
       - name: Print Hello
