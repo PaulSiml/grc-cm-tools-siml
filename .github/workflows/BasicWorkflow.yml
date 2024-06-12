@@ -9,7 +9,7 @@ jobs:
       - name: Print Greeting
         run: echo "Hello World"
       - name: Print Goodbye
-        run: echo "Goodbye Terrible World"
+        run: echo "Goodbye World"
   job2:
     needs: job1
     runs-on: windows-latest
