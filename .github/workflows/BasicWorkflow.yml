@@ -10,3 +10,8 @@ jobs:
         run: echo "Hello World"
       - name: Print Goodbye
         run: echo "Goodbye World"
+  job2:
+    runs-on: windows-latest
+    steps:
+      - name: Print Hello
+        run: echo "Hello Tucson"       
