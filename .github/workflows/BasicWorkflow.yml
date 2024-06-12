@@ -9,9 +9,4 @@ jobs:
       - name: Print Greeting
         run: echo "Hello World"
       - name: Print Goodbye
-        run: echo " Goodbye World"
-  job2:
-    runs-on: windows-latest
-    steps:
-      - name: Print Job2 Action
-        run: echo "Hello Tucson,AZ"
+        run: echo "Goodbye World"
