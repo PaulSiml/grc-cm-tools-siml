@@ -1,0 +1,12 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Basic Workflow
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: windows-latest
+    steps:
+      - name: Print Greeting
+        run: echo "Hello World"
+      - name: Print Goodbye
+        run: echo " Goodbye World"
