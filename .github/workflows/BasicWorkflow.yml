@@ -1,13 +1,15 @@
 # This is a basic workflow to help you get started with Actions
 
 name: Basic Workflow
-on: [push, workflow_dispatch]
+on: workflow_dispatch
 jobs:
   job1:
     runs-on: windows-latest
     steps:
       - name: Print Greeting
         run: echo "Hello World"
+      - name: Get Code
+        run: actions/checkout@v3
       - name: Print Goodbye
         run: echo "Goodbye World"
   job2:
