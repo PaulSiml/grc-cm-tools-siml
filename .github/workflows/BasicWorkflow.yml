@@ -16,5 +16,7 @@ jobs:
     needs: job1
     runs-on: windows-latest
     steps:
-      - name: Print Hello
-        run: echo "${{ toJSON(github) }}"      
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"     
