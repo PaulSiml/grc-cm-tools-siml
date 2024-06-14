@@ -9,7 +9,7 @@ jobs:
       - name: Print Greeting
         run: echo "Hello World"
       - name: Get Code
-        run: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Print Goodbye
         run: echo "Goodbye World"
   job2:
