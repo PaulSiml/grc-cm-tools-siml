@@ -8,13 +8,15 @@ jobs:
     steps:
       - name: Print Greeting
         run: echo "Hello World"
-      - name: Get Code
-        uses: actions/checkout@v4
       - name: Print Goodbye
         run: echo "Goodbye World"
   job2:
     needs: job1
     runs-on: windows-latest
     steps:
-      - name: Dump job context
+      - name: Dump workflow
+        run: echo "${{ github.workflow }}"   
+      - name: Dump run_id
         run: echo "${{ github.run_id }}"     
+      - name: Dump run_number
+        run: echo "${{ github.run_number }}"   
