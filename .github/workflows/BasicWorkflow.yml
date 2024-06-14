@@ -16,5 +16,5 @@ jobs:
     needs: job1
     runs-on: windows-latest
     steps:
-      - name: Dump GitHub context
-        run: echo "${{ toJson(github) }}"     
+      - name: Dump job context
+        run: echo "${{ github.run_id }}"     
