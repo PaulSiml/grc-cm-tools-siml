@@ -16,11 +16,19 @@ jobs:
         run: rm -r D:\temp\Siml
       - name: Make Directory
         run: mkdir D:\temp\siml
+      - name: Make FIle
+        uses: 1arp/create-a-file-action@0.4.5
+        with:
+          path: dist
+          isAbsolutePath: false
+          file: HelloNewWorld.txt
+          content: Hello World
+       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: my-files
-          path: C:\Users\psiml\source\repos\grc-cm-tools-siml\dist
+          path: dist
 
   job2:
     needs: job1
