@@ -11,9 +11,11 @@ jobs:
         run: echo "Hello World"
       - name: Print Goodbye
         run: echo "Goodbye World"
+      - name: Make Directory
+        run: mkdir D:\temp\siml
   job2:
     needs: job1
-    runs-on: windows-latest
+    runs-on: self-hosted
     steps:
       - name: Dump workflow
         run: echo "${{ github.workflow }}"   
