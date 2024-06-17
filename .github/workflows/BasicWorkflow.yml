@@ -15,7 +15,8 @@ jobs:
         shell: powershell
         run: rm -r D:\temp\Siml
       - name: Make Directory
-        run: mkdir D:\temp\siml
+        shell: powershell
+        run: md D:\temp\siml
       - name: Make FIle
         uses: 1arp/create-a-file-action@0.4.5
         with:
