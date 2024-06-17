@@ -4,7 +4,8 @@ name: Basic Workflow
 on: workflow_dispatch
 jobs:
   job1:
-    runs-on: windows-latest
+    runs-on: self-hosted
+    #runs-on: windows-latest
     steps:
       - name: Print Greeting
         run: echo "Hello World"
