@@ -13,6 +13,7 @@ jobs:
         run: echo "Goodbye World"
       - name: Delete Directory
         run: rmdir /s D:\temp\siml
+        # comment
       - name: Make Directory
         run: mkdir D:\temp\siml
       - name: Upload artifacts
