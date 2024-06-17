@@ -12,10 +12,10 @@ jobs:
       - name: Print Goodbye
         run: echo "Goodbye World"
       - name: Delete Directory
+        #shell: powershell
+        #run: echo ${env:PATH}
         shell: powershell
-        run: echo ${env:PATH}
-        #shell: pwsh
-        #run: rm -r D:\temp\Siml
+        run: rm -r D:\temp\Siml
       - name: Make Directory
         run: mkdir D:\temp\siml
       - name: Upload artifacts
