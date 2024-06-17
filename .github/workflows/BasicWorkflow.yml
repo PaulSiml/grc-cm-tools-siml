@@ -12,8 +12,6 @@ jobs:
       - name: Print Goodbye
         run: echo "Goodbye World"
       - name: Delete Directory
-        #shell: powershell
-        #run: echo ${env:PATH}
         shell: powershell
         run: rm -r D:\temp\Siml
       - name: Make Directory
@@ -22,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-files
-          path: ./dist
+          path: C:\Users\psiml\source\repos\grc-cm-tools-siml\dist
 
   job2:
     needs: job1
