@@ -20,7 +20,7 @@ jobs:
 
       - name: Kill Artifact Directory
         shell: powershell
-        run: if (Test-Path target_1) Remove-Item target_1 -Recurse -Force
+        run: if (Test-Path target_1) { Remove-Item target_1 -Recurse -Force }
 
       - name: Make File 1
         uses: 1arp/create-a-file-action@0.4.5
