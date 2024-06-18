@@ -13,7 +13,7 @@ jobs:
         run: echo "Goodbye World"
       - name: Delete Directory
         shell: powershell
-        run: rm -r D:\temp\Siml
+        run: rm -r D:\temp\siml
       - name: Make Directory
         shell: powershell
         run: md D:\temp\siml
