@@ -20,14 +20,14 @@ jobs:
       - name: Make File 1
         uses: 1arp/create-a-file-action@0.4.5
         with:
-          path: dist
+          path: dist\src
           isAbsolutePath: false
           file: HelloNewWorld.txt
           content: Hello World
       - name: Make File 2
         uses: 1arp/create-a-file-action@0.4.5
         with:
-          path: dist
+          path: dist\src
           isAbsolutePath: false
           file: HelloTucson.txt
           content: Hello Tucson
