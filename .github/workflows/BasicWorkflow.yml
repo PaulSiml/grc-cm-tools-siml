@@ -39,7 +39,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: my-files
           path: D:\temp\siml
 
   job2:
