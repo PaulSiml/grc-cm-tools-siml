@@ -3,7 +3,7 @@
 name: Basic Workflow
 on: workflow_dispatch
 env:
-  TARGET_DIRECTORY: D:\temp\siml
+  TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
   job1:
     runs-on: self-hosted
