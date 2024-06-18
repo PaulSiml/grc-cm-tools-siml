@@ -22,7 +22,7 @@ jobs:
         with:
           path: dist\src
           isAbsolutePath: false
-          file: HelloNewWorld.txt
+          file: HelloWorld.txt
           content: Hello World
       - name: Make File 2
         uses: 1arp/create-a-file-action@0.4.5
@@ -36,11 +36,11 @@ jobs:
         with:
           name: my-files
           path: dist
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: my-files
-          path: D:\temp\siml
+      #- name: Download artifacts
+      #  uses: actions/download-artifact@v4
+      #  with:
+      #    name: my-files
+      #    path: D:\temp\siml
 
   job2:
     needs: job1
