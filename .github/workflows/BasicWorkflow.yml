@@ -24,13 +24,13 @@ jobs:
           isAbsolutePath: false
           file: HelloWorld.txt
           content: Hello World
-      - name: Make File 2
-        uses: 1arp/create-a-file-action@0.4.5
-        with:
-          path: target_1\src
-          isAbsolutePath: false
-          file: HelloTucson.txt
-          content: Hello Tucson
+      #- name: Make File 2
+      #  uses: 1arp/create-a-file-action@0.4.5
+      #  with:
+      #    path: target_1\src
+      #    isAbsolutePath: false
+      #    file: HelloTucson.txt
+      #    content: Hello Tucson
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
