@@ -2,6 +2,8 @@
 
 name: Basic Workflow
 on: workflow_dispatch
+env:
+  TARGET_DIRECTORY: D:\temp\siml
 jobs:
   job1:
     runs-on: self-hosted
@@ -23,14 +25,14 @@ jobs:
         run: if (Test-Path dist) { Remove-Item dist -Recurse -Force }
       - name: Kill Target Directory
         shell: powershell
-        run: if (Test-Path D:\temp\siml) { Remove-Item D:\temp\siml -Recurse -Force }
-      - name: Make File 1
-        uses: 1arp/create-a-file-action@0.4.5
-        with:
-          path: dist\src
-          isAbsolutePath: false
-          file: HelloWorld.txt
-          content: Hello World
+        run: if (Test-Path TARGET_DIRECTORY) { Remove-Item TARGET_DIRECTORY -Recurse -Force }
+      #- name: Make File 1
+      #  uses: 1arp/create-a-file-action@0.4.5
+      #  with:
+      #    path: dist\src
+      #    isAbsolutePath: false
+      #    file: HelloWorld.txt
+      #    content: Hello World
       - name: Make File 2
         uses: 1arp/create-a-file-action@0.4.5
         with:
