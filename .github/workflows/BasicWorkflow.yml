@@ -20,32 +20,32 @@ jobs:
 
       - name: Kill Artifact Directory
         shell: powershell
-        run: if (Test-Path target_1) { Remove-Item target_1 -Recurse -Force }
+        run: if (Test-Path dist) { Remove-Item dist -Recurse -Force }
 
-      #- name: Make File 1
-      #  uses: 1arp/create-a-file-action@0.4.5
-      #  with:
-      #    path: target_1\src
-      #    isAbsolutePath: false
-      #    file: HelloWorld.txt
-      #    content: Hello World
+      - name: Make File 1
+        uses: 1arp/create-a-file-action@0.4.5
+        with:
+          path: dist\src
+          isAbsolutePath: false
+          file: HelloWorld.txt
+          content: Hello World
       - name: Make File 2
         uses: 1arp/create-a-file-action@0.4.5
         with:
-          path: target_1\src
+          path: dist\src
           isAbsolutePath: false
           file: HelloTucson.txt
           content: Hello Tucson
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: my-files-3
-          path: target_1
-      #- name: Download artifacts
-      #  uses: actions/download-artifact@v4
-      #  with:
-      #    name: my-files
-      #    path: D:\temp\siml
+          name: my-files
+          path: dist
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: my-files
+          path: D:\temp\siml
 
   job2:
     needs: job1
