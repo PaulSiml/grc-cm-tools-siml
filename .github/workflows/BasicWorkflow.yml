@@ -11,12 +11,12 @@ jobs:
         run: echo "Hello World"
       - name: Print Goodbye
         run: echo "Goodbye World"
-      - name: Delete Directory
-        shell: powershell
-        run: rm -r D:\temp\siml
-      - name: Make Directory
-        shell: powershell
-        run: md D:\temp\siml
+      #- name: Delete Directory
+      #  shell: powershell
+      #  run: rm -r D:\temp\siml
+      #- name: Make Directory
+      #  shell: powershell
+      #  run: md D:\temp\siml
       - name: Make File 1
         uses: 1arp/create-a-file-action@0.4.5
         with:
