@@ -20,16 +20,16 @@ jobs:
       - name: Make FIle
         uses: 1arp/create-a-file-action@0.4.5
         with:
-          path: dist
-          isAbsolutePath: false
+          path: D:\temp\siml
+          isAbsolutePath: true
           file: HelloNewWorld.txt
           content: Hello World
-       
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-files
-          path: dist
+ 
+      #- name: Upload artifacts
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: my-files
+      #   path: D:\temp\siml\dist
 
   job2:
     needs: job1
