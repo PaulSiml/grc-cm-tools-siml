@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: my-files
+          name: my-files-1
           path: dist
       #- name: Download artifacts
       #  uses: actions/download-artifact@v4
