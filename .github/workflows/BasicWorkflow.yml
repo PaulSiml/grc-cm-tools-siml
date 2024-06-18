@@ -36,11 +36,11 @@ jobs:
         with:
           name: my-files
           path: dist
-      #- name: Download artifacts
-      #  uses: actions/download-artifact@v4
-      #  with:
-      #    name: dist
-      #    path: D:\temp\siml
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: D:\temp\siml
 
   job2:
     needs: job1
