@@ -49,8 +49,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-files
-          path: D:\temp\siml
-
+          path: D:\temp\GitHub_Build\${{ github.run_id }}\${{ github.run_number }}
   job2:
     needs: job1
     runs-on: self-hosted
