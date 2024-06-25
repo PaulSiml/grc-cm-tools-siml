@@ -32,7 +32,7 @@ jobs:
       - name: Extract Files RESTapi
         shell: powershell
         run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
-
+      
       #- name: Make File 1
       #  uses: 1arp/create-a-file-action@0.4.5
       #  with:
@@ -40,13 +40,32 @@ jobs:
       #    isAbsolutePath: false
       #    file: HelloWorld.txt
       #    content: Hello World
-      - name: Make File 2
-        uses: 1arp/create-a-file-action@0.4.5
+      #- name: Make File 2
+      #  uses: 1arp/create-a-file-action@0.4.5
+      #  with:
+      #    path: dist\src
+      #    isAbsolutePath: false
+      #    file: HelloTucson.txt
+      #    content: Hello Tucson
+      - name: Check out repo
+        uses: actions/checkout@v4
         with:
-          path: dist\src
-          isAbsolutePath: false
-          file: HelloTucson.txt
-          content: Hello Tucson
+          fetch-depth: 0
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+      
+     
+
+      - name: List all changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            echo "$file was changed"
+          done
+
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
