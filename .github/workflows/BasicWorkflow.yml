@@ -26,9 +26,12 @@ jobs:
       - name: Kill Target Directory
         shell: powershell
         run: if (Test-Path $env:TARGET_DIRECTORY) { Remove-Item $env:TARGET_DIRECTORY -Recurse -Force }
+      - name: Make Directory
+        shell: powershell
+        run: New-Item -Path 'dist\src' -ItemType Directory
       - name: Extract Files RESTapi
         shell: powershell
-        run: Copy-Item -Path D:\temp\XPXSTST.MAC -Destination dist\src
+        run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
 
       #- name: Make File 1
       #  uses: 1arp/create-a-file-action@0.4.5
