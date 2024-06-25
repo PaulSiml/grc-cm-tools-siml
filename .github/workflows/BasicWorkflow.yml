@@ -87,3 +87,29 @@ jobs:
       - name: Dump run_number
         run: echo "${{ github.run_number }}"
     
+  jobs3:
+    # ------------------------------------------------------------------------------------------------------------------------------------------------
+   # Event `pull_request`: Compare the last commit of the main branch or last remote commit of the PR branch -> to the current commit of a PR branch.
+   # ------------------------------------------------------------------------------------------------------------------------------------------------
+   # changed_files:
+      needs: job2
+      runs-on: self-hosted
+      name: Test changed-files
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+  
+        - name: Get changed files
+          id: changed-files
+          uses: tj-actions/changed-files@v44
+        
+  
+        - name: List all changed files
+          env:
+            ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+          run: |
+            for file in ${ALL_CHANGED_FILES}; do
+              echo "$file was changed"
+            done
+  
