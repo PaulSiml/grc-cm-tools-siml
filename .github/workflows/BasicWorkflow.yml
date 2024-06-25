@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-files
-          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}
+          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\20240625
   job2:
     needs: job1
     runs-on: self-hosted
