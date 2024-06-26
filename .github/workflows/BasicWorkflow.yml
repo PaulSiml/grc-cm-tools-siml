@@ -90,7 +90,7 @@ jobs:
           uses: actions/checkout@v4
 
         - name: API check
-          run: curl $env:MYPROGRAM 
+          run: curl https://www.symplr.com 
         #- name: Change Files
         #  uses: dorny/paths-filter@v3
         # id: changes
