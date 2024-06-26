@@ -79,7 +79,7 @@ jobs:
    # changed_files:
       needs: job2
       runs-on: self-hosted
-      name: Test changed-files
+      
       steps:
         - name: Print Greeting
           run: echo "Hello World"
