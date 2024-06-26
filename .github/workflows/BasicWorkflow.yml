@@ -3,7 +3,7 @@
 name: Basic Workflow
 on:
   - workflow_dispatch
-  #- push
+  - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
@@ -86,11 +86,20 @@ jobs:
 
         - name: Checkout
           uses: actions/checkout@v4
-     
-        #- name: Get changed files
-        #  id: changed-files
-        #  uses: tj-actions/changed-files@v44
+          with:
+            fetch-depth: 0
+
+        - name: Get changed files
+          id: changed-files
+          uses: tj-actions/changed-files@v44
       
+        - name: List all changed files
+          env:
+            ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+          run: |
+            for file in ${ALL_CHANGED_FILES}; do
+              echo "$file was changed"
+            done
         # 
         # 
         #- name: List all changed files
