@@ -89,8 +89,8 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
 
-        - name: API check
-          run: curl https://www.symplr.com 
+        #- name: API check
+        #  run: curl https://www.symplr.com 
         #- name: Change Files
         #  uses: dorny/paths-filter@v3
         # id: changes
