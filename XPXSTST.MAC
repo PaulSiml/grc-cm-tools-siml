@@ -1,7 +1,0 @@
-ROUTINE XPXSTST
-MAIN	
-	W !,"Hello Paul"
-	Q
-
-
-
