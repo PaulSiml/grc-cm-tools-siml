@@ -1,7 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
 name: Basic Workflow
-on: workflow_dispatch
+on:
+  - workflow_dispatch
+  #- push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
@@ -47,23 +49,6 @@ jobs:
       #    isAbsolutePath: false
       #    file: HelloTucson.txt
       #    content: Hello Tucson
-      - name: Check out repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v44
-      
-     
-
-      - name: List all changed files
-        env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
-          done
 
 
       - name: Upload artifacts
@@ -96,20 +81,22 @@ jobs:
       runs-on: self-hosted
       name: Test changed-files
       steps:
+        - name: Print Greeting
+          run: echo "Hello World"
         - uses: actions/checkout@v4
           with:
             fetch-depth: 0
   
-        - name: Get changed files
-          id: changed-files
-          uses: tj-actions/changed-files@v44
-        
-  
-        - name: List all changed files
-          env:
-            ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
-          run: |
-            for file in ${ALL_CHANGED_FILES}; do
-              echo "$file was changed"
-            done
+        #- name: Get changed files
+        #  id: changed-files
+        #  uses: tj-actions/changed-files@v44
+        # 
+        # 
+        #- name: List all changed files
+        #  env:
+        #    ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        #  run: |
+        #    for file in ${ALL_CHANGED_FILES}; do
+        #      echo "$file was changed"
+        #    done
   
