@@ -3,7 +3,7 @@
 name: Basic Workflow
 on:
   - workflow_dispatch
-  #- push
+  - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
