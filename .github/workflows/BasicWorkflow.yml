@@ -3,7 +3,7 @@
 name: Basic Workflow
 on:
   - workflow_dispatch
-  - push
+  #- push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
@@ -79,25 +79,29 @@ jobs:
    # changed_files:
       needs: job2
       runs-on: self-hosted
-      
+      env:
+        MYPROGRAM: '-L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.MYTOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/PaulSiml/grc-cm-Tools-siml'
+        
       steps:
         - name: Print Greeting
           run: echo "Hello World"
 
         - name: Checkout
           uses: actions/checkout@v4
-      
-        - name: Change Files
-          uses: dorny/paths-filter@v3
-          id: changes
-          with:
-           filters: |
-             src:
-               - 'src/**'
-          
-            # run only if some file in 'src' folder was changed
-        - name: Confitional
-          if: steps.changes.outputs.src  == 'true'
-          run: echo "Hit"
+
+        - name: API check
+          run: curl $env:MYPROGRAM 
+        #- name: Change Files
+        #  uses: dorny/paths-filter@v3
+        # id: changes
+        #  with:
+        #   filters: |
+        #     src:
+        #       - 'src/**'
+        #  
+        #    # run only if some file in 'src' folder was changed
+        #- name: Confitional
+        #  if: steps.changes.outputs.src  == 'true'
+        #  run: echo "Hit"
       
   
