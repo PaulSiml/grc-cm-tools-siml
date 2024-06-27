@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Print Greeting
         run: |
-            echo env:TARGET_DIRECTORY
+            echo $env:TARGET_DIRECTORY
             echo "Hello World"
             
       - name: Checkout
