@@ -34,10 +34,8 @@ jobs:
       #    done
       - name: Loop through numbers
         id: loop
-        run: |
-            for %i in (1 2 3 4 5)
-            do echo "Number: %i"
-            done
+        run: for %i in (1 2 3 4 5) do echo "Hello %i "
+        
             
 
       - name: Get changed files
