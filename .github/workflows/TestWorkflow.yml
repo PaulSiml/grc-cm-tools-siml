@@ -1,1 +1,23 @@
+name: Test Workflow
+on:
+  - workflow_dispatch
+  #- push
+env:
+  TARGET_DIRECTORY: 'D:\temp\siml'
+jobs:
+  job1:
+    runs-on: self-hosted
+    steps:
+      - name: Print Greeting
+        run: echo "Hello World"
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+            path: main
+            token: ${{ secrets.MYTOKEN }}
+            sparse-checkout: |
+                src
+      - name: Print Goodbye
+        run: echo "Goodbye World"
+     
 
