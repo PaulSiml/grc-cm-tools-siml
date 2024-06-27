@@ -16,8 +16,14 @@ jobs:
         run: |
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
-
-
+      - name: Changed Files
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+            filters: |
+                src:
+                - 'src/**'
+            token: ${{ secrets.MYTOKEN }}   
       - name: Print Goodbye
         run: echo "Goodbye World"
      
