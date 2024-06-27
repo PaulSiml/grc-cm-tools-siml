@@ -16,31 +16,42 @@ jobs:
         run: |
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
-      - name: Changed Files
-        uses: dorny/paths-filter@v3
-        id: changes
-        with:
-            filters: |
-                src:
-                - 'src/**'
-            #token: ${{ secrets.MYTOKEN }}
-      - if: steps.changes.outputs.src == 'true'
-        #run: echo "Hit"
+      #- name: Changed Files
+      #  uses: dorny/paths-filter@v3
+      #  id: changes
+      #  with:
+      #      filters: |
+      #          src:
+      #          - 'src/**'
+      #      #token: ${{ secrets.MYTOKEN }}
+      #- if: steps.changes.outputs.src == 'true'
+      #  #run: echo "Hit"
+      #  env:
+      #    ALL_CHANGED_FILES: ${{ steps.changes.outputs.src }}
+      #  run: |
+      #    for file in ${ALL_CHANGED_FILES}; do
+      #      echo "$file was changed"
+      #    done
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+      
+
+      - name: List all changed files
         env:
-          ALL_CHANGED_FILES: ${{ steps.changes.outputs.src }}
+            ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
-          for file in ${ALL_CHANGED_FILES}; do
+            for file in ${ALL_CHANGED_FILES}; do
             echo "$file was changed"
-          done
-
-
+            done
+            
       - name: Print Goodbye
         run: echo "Goodbye World"
-      - name: Git Version
-        run: |
-            cd "C:\Program Files\Git\cmd"
-            dir
-            git version
+      #- name: Git Version
+      #  run: |
+      #      cd "C:\Program Files\Git\cmd"
+      #      dir
+      #      git version
      
 
 
