@@ -9,7 +9,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Print Greeting
-        run: echo "Hello World"
+        run: |
+            echo $TARGET_DIRECTORY   
+            echo "Hello World"
+            
       - name: Checkout
         uses: actions/checkout@v3
       - name: Print workspace
@@ -36,7 +39,7 @@ jobs:
          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
             echo $ALL_CHANGED_FILES
-            echo $TARGET_DIRECTORY
+            
       #  
       #  run: for file in ${ALL_CHANGED_FILES} do echo "$file was changed"
       #  run: for %f in ( ${{ ALL_CHANGED_FILES }} ) do echo "$file was changed"
