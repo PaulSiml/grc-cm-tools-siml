@@ -35,7 +35,7 @@ jobs:
       - name: Mendax Loop through numbers
         id: loop
         run: |
-            for i in 1 2 3 4 5
+            for i in (1 2 3 4 5)
             do
             echo "Mendax Current number: $i"
             done
@@ -49,11 +49,8 @@ jobs:
         env:
             ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         
-        run: |
-            for file in ${ALL_CHANGED_FILES}
-            do
-            echo "$file was changed"
-            done
+        run: for file in ${ALL_CHANGED_FILES} do echo "$file was changed"
+            
 
       - name: Print Goodbye
         run: echo "Goodbye World"
