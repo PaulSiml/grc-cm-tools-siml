@@ -33,9 +33,14 @@ jobs:
       #      echo "$file was changed"
       #    done
       - name: Loop through numbers
+        env:
+            VARIABLES: '1'
         id: loop
-        shell: cmd
-        run: FOR /L I IN (1,1,10) DO echo "hello"
+        shell: bash
+        run: |
+          for i in {1 2 3}; do
+            echo "Hello $i"
+          done
 
         
             
