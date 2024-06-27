@@ -23,7 +23,9 @@ jobs:
             filters: |
                 src:
                 - 'src/**'
-            #token: ${{ secrets.MYTOKEN }}   
+            #token: ${{ secrets.MYTOKEN }}
+      - if: steps.changes.outputs.src == 'true'
+        run: echo "Hit"
       - name: Print Goodbye
         run: echo "Goodbye World"
       - name: Git Version
