@@ -34,6 +34,7 @@ jobs:
       #    done
       - name: Loop through numbers
         id: loop
+        shell: cmd
         run: for %i in (1 2 3 4 5) do echo "Hello %i "
         
             
