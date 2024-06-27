@@ -25,10 +25,11 @@ jobs:
                 - 'src/**'
       #      #token: ${{ secrets.MYTOKEN }}
       - if: steps.changes.outputs.src == 'true'
-      #  #run: echo "Hit"
+        
         env:
           ALL_CHANGED_FILES: ${{ steps.changes.outputs.src }}
-        run: for %f in (env:ALL_CHANGED_FILES) do type %f
+        run: echo env:ALL_CHANGED_FILES
+        #run: for %f in (env:ALL_CHANGED_FILES) do type %f
          
 
       #- name: Get changed files
