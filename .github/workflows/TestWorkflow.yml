@@ -27,7 +27,9 @@ jobs:
       #- name: Print Goodbye
       #  run: echo "Goodbye World"
       - name: Git Version
-        run: C:\Program Files\Git\cmd\git.exe --version
+        run: |
+            cd C:\Program Files\Git\cmd
+            git.exe --version
      
 
 
