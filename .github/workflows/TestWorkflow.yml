@@ -35,7 +35,7 @@ jobs:
       - name: Loop through numbers
         id: loop
         shell: cmd
-        run: FOR /L %i IN (1,1,10) DO echo "hello %i"
+        run: FOR /L %i IN (1,1,10) DO echo "hello"
 
         
             
