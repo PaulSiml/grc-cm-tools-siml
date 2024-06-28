@@ -29,7 +29,8 @@ jobs:
           list-files: csv
           filters: |
             allChanges:
-              - added|deleted|modified: 'src/**'
+              #- added|deleted|modified: 'src/**'
+              - deleted: 'src/**'
 
       # - if: steps.changes.outputs.src == 'true'
       #   run: echo "HIT"
