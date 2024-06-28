@@ -40,7 +40,7 @@ jobs:
       - if: steps.changes.outputs.allChanges == 'true'
         env:
           ALL_FILES: ${{ steps.changes.outputs.allChanges }}
-        run: echo "ALL_FILES
+        run: echo $env:ALL_FILES
 
       #- name: File List
       #  env:
