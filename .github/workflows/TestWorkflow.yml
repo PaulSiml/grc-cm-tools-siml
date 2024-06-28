@@ -31,7 +31,9 @@ jobs:
             src:
               - 'src/**'
             deletes:
-            - deleted: '**'  
+              - deleted: '**'
+            #allChanges:
+            #  - added|deleted|modified: '**' 
       - if: steps.changes.outputs.src == 'true'
         run: echo "HIT"
 
