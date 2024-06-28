@@ -41,10 +41,10 @@ jobs:
 
       - name: Loop Files
         shell: bash
-        run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
-          done
+        run: ls
+          #for file in ${ALL_CHANGED_FILES}; do
+           # echo "$file was changed"
+          #done
             
             
       #  

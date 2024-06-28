@@ -1,4 +1,4 @@
 ROUTINE XPXSTST
 MAIN	
-	W !,"Hello World"
+	W !,"Hello AZ"
 	Q
