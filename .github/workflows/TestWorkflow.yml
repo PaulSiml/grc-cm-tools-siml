@@ -29,7 +29,7 @@ jobs:
           list-files: csv
           filters: |
             allChanges:
-              - added: 'src/**'
+              - deleted: 'src/**'
 
           #- added|deleted|modified: 'src/**'
   
