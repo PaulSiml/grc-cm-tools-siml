@@ -28,18 +28,14 @@ jobs:
         with:
           list-files: csv
           filters: |
-            shared: &shared
-              - src/**
-            -allChanges:
-              - added|deleted|modified: *shared
-            # src:
-            #  - 'src/**'
+            allChanges:
+              - added|deleted|modified: 'src/**'
 
       # - if: steps.changes.outputs.src == 'true'
       #   run: echo "HIT"
       - if: steps.changes.outputs.allChanges == 'true'
         env:
-          ALL_FILES: ${{ steps.changes.outputs.allChanges }}
+          ALL_FILES: ${{ steps.changes.outputs.allChanges_files }}
         run: echo $env:ALL_FILES
 
       #- name: File List
