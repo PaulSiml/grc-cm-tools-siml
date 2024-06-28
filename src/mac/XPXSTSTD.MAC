@@ -1,0 +1,4 @@
+ROUTINE XPXSTSTD
+MAIN	
+	W !,"Hello Pima"
+	Q
