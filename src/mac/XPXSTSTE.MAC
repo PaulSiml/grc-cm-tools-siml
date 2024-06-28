@@ -1,0 +1,4 @@
+ROUTINE XPXSTSTE
+MAIN	
+	W !,"Hello Mountain"
+	Q
