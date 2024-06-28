@@ -36,8 +36,10 @@ jobs:
       - name: File List
         env:
           ALL_CHANGED_FILES: ${{ steps.changes.outputs.src_files }}
-        run: echo $env:ALL_CHANGED_FILES
-
+          ALL_CHANGED_FILES_COUNT: ${{ steps.changes.outputs.src_count }}
+        run: |
+         echo $env:ALL_CHANGED_FILES
+         echo $env:ALL_CHANGED_FILES_COUNT
       #- name: Get changed files
       #  id: changed-files
       #  uses: tj-actions/changed-files@v44
