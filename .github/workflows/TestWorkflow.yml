@@ -30,7 +30,7 @@ jobs:
           filters: |
             allChanges:
               #- added|deleted|modified: 'src/**'
-              - added|modified: 'src/**'
+              - modified: 'src/**'
 
       # - if: steps.changes.outputs.src == 'true'
       #   run: echo "HIT"
