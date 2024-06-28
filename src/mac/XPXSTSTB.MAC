@@ -1,4 +1,0 @@
-ROUTINE XPXSTSTB
-MAIN	
-	W !,"Hello Arizona"
-	Q
