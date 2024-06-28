@@ -28,25 +28,31 @@ jobs:
         with:
           list-files: csv
           filters: |
-            src:
-              - 'src/**'
-            deletes:
-              - deleted: '**'
-      - if: steps.changes.outputs.src == 'true'
-        run: echo "HIT"
-      - if: steps.changes.outputs.deletes == 'true'
-        run: echo "HIT DELTES"
+            shared: &shared
+              - src/**
+            -allChanges:
+              - added|deleted|modified: *shared
+            # src:
+            #  - 'src/**'
 
-      - name: File List
+      # - if: steps.changes.outputs.src == 'true'
+      #   run: echo "HIT"
+      - if: steps.changes.outputs.allChanges == 'true'
         env:
-          ALL_CHANGED_FILES: ${{ steps.changes.outputs.src_files }}
-          ALL_CHANGED_FILES_COUNT: ${{ steps.changes.outputs.src_count }}
+          ALL_FILES: ${{ steps.changes.outputs.allChanges }}
+        run: echo "ALL_FILES
 
-          ALL_DELETED_FILES: ${{ steps.changes.outputs.deletes_files }}
-        run: |
-          echo $env:ALL_CHANGED_FILES
-          echo $env:ALL_CHANGED_FILES_COUNT
-          echo $env:ALL_DELETED_FILES
+      #- name: File List
+      #  env:
+      #    ALL_CHANGED_FILES: ${{ steps.changes.outputs.src_files }}
+      #    ALL_CHANGED_FILES_COUNT: ${{ steps.changes.outputs.src_count }}
+
+      #    ALL_DELETED_FILES: ${{ steps.changes.outputs.deletes_files }}
+      #  run: |
+      #    echo $env:ALL_CHANGED_FILES
+      #    echo $env:ALL_CHANGED_FILES_COUNT
+      #    echo $env:ALL_DELETED_FILES
+
       #- name: Get changed files
       #  id: changed-files
       #  uses: tj-actions/changed-files@v44
