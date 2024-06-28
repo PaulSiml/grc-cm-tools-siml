@@ -30,10 +30,7 @@ jobs:
                 src:
                 - 'src/**'
       - if: steps.changes.outputs.src == 'true'
-        shell: bash
-        run: |
-          echo ${scr}_count
-          echo steps.changes.outputs.src.files
+        run: echo ${{ steps.changes.outputs.scr_files }}
 
       #- name: Get changed files
       #  id: changed-files
