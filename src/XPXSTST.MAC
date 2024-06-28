@@ -1,4 +1,4 @@
 ROUTINE XPXSTST
 MAIN	
-	W !,"Hello Phoenix"
+	W !,"Hello Tucson"
 	Q
