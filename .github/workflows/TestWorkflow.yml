@@ -37,9 +37,15 @@ jobs:
       - name: List all changed files 
         env:
          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: echo $env:ALL_CHANGED_FILES
+
+      - name: Loop Files
+        shell: bash
         run: |
-            echo $env:ALL_CHANGED_FILES
-            FOR %i IN (*.MAC) DO echo "%i"
+          for file in ${ALL_CHANGED_FILES}; do
+            echo "$file was changed"
+          done
+            
             
       #  
       #  run: for file in ${ALL_CHANGED_FILES} do echo "$file was changed"
