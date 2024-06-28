@@ -31,8 +31,11 @@ jobs:
             src:
               - 'src/**'
       - if: steps.changes.outputs.src == 'true'
+        run: echo "HIT"
+
+      - name: File List
         env:
-          ALL_CHANGED_FILES: ${{ steps.changes.outputs.scr_files }}
+          ALL_CHANGED_FILES: ${{ steps.changes.outputs.src_files }}
         run: echo $env:ALL_CHANGED_FILES
 
       #- name: Get changed files
