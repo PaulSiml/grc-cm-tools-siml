@@ -1,4 +1,0 @@
-ROUTINE XPXSTSTC
-MAIN	
-	W !,"Hello Tucson Paul"
-	Q
