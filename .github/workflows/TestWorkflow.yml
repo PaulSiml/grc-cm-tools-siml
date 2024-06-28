@@ -1,7 +1,7 @@
 name: Test Workflow
 on:
   - workflow_dispatch
-  #- push
+  - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
@@ -29,7 +29,7 @@ jobs:
           list-files: csv
           filters: |
             allChanges:
-              - added|modified: '**'
+              - added|modified: 'src/**'
 
           #- added|deleted|modified: 'src/**'
   
