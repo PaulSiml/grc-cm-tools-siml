@@ -26,9 +26,10 @@ jobs:
         uses: dorny/paths-filter@v3
         id: changes
         with:
-            filters: |
-                src:
-                - 'src/**'
+          list-files: csv
+          filters: |
+            src:
+              - 'src/**'
       - if: steps.changes.outputs.src == 'true'
         env:
           ALL_CHANGED_FILES: ${{ steps.changes.outputs.scr_files }}
