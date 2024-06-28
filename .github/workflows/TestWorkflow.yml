@@ -15,10 +15,13 @@ jobs:
             
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Print workspace
         run: |
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
+
+      
       - name: Changed Files
         uses: dorny/paths-filter@v3
         id: changes
@@ -27,42 +30,29 @@ jobs:
                 src:
                 - 'src/**'
       - if: steps.changes.outputs.src == 'true'
-        run: echo "Hit"
-         
-
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v44
-
-      - name: List all changed files 
-        env:
-         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: echo $env:ALL_CHANGED_FILES
-
-      - name: Loop Files
-        env:
-         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         shell: bash
         run: |
-          for file in ${ALL_CHANGED_FILES}; do echo "$file"; done
+          echo ${scr}_count
+          echo steps.changes.outputs.src.files
 
-          #for file in ${ALL_CHANGED_FILES}; do
-          # echo "$file was changed"
-          #done
-            
-            
-      #  
-      #  run: for file in ${ALL_CHANGED_FILES} do echo "$file was changed"
-      #  run: for %f in ( ${{ ALL_CHANGED_FILES }} ) do echo "$file was changed"
-      #  for %f in (*.doc *.txt) do type %f 
+      #- name: Get changed files
+      #  id: changed-files
+      #  uses: tj-actions/changed-files@v44
+
+      #- name: List all changed files 
+      #  env:
+      #   ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      #  run: echo $env:ALL_CHANGED_FILES
+
+      #- name: Loop Files
+      #  env:
+      #   ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      #  shell: bash
+      #  run: |
+      #    for file in ${ALL_CHANGED_FILES}; do echo "$file"; done
 
       - name: Print Goodbye
         run: echo "Goodbye World"
-      #- name: Git Version
-      #  run: |
-      #      cd "C:\Program Files\Git\cmd"
-      #      dir
-      #      git version
-     
+ 
 
 
