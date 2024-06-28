@@ -40,10 +40,11 @@ jobs:
         run: echo $env:ALL_CHANGED_FILES
 
       - name: Loop Files
+        env:
+         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         shell: bash
         run: |
-          STR="HW.txt HW1.txt HW2.xml HW3.log"
-          for file in ${STR}; do echo "$file"; done
+          for file in ${ALL_CHANGED_FILES}; do echo "$file"; done
 
           #for file in ${ALL_CHANGED_FILES}; do
           # echo "$file was changed"
