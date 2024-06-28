@@ -1,1 +1,4 @@
-
+ROUTINE XPXSTSTC
+MAIN	
+	W !,"Hello Tucson"
+	Q
