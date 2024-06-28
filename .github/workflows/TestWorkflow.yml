@@ -32,10 +32,10 @@ jobs:
               - 'src/**'
             deletes:
               - deleted: '**'
-            #allChanges:
-            #  - added|deleted|modified: '**' 
       - if: steps.changes.outputs.src == 'true'
         run: echo "HIT"
+      - if: steps.changes.outputs.deletes == 'true'
+        run: echo "HIT DELTES"
 
       - name: File List
         env:
