@@ -47,7 +47,7 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
-          echo "myValue='hello world'" >> $GITHUB_ENV
+          echo "myValue=$env:TARGET_DIRECTORY" | $GITHUB_ENV
           echo $env:myValue
    
 
