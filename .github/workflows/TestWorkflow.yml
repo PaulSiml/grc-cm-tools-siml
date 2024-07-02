@@ -4,6 +4,7 @@ on:
   - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
+  MYVALUE:
 jobs:
   job1:
     runs-on: self-hosted
@@ -47,8 +48,9 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
-          echo ${{ github.workspace }}\$env:ALL_MODIFIED.Replace('/','\')
-
+          echo $env:ALL_MODIFIED ==> $env:MYVALUE
+          echo 'this is the value: ' $env:MYVALUE
+   
 
       #- name: File List
       #  env:
