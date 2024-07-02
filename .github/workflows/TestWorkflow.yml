@@ -48,6 +48,7 @@ jobs:
         run: |
           echo $env:ALL_MODIFIED
           $str=$env:ALL_MODIFIED
+          $str=$str.Replace('/','\')
           Add-Content -Path ${env:GITHUB_ENV} -Value "action_state=$str"
 
       - name: Create Variable
@@ -62,7 +63,7 @@ jobs:
         #shell: bash
         #run : echo ${{ env.action_state }}
         #shell: pwsh
-        run: echo "Action State is ${{ env.action_state }}"
+        run: echo "${{ github.workspace }}\${{ env.action_state }}"
    
 
       #- name: File List
