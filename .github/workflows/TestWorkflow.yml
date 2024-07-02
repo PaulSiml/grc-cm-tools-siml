@@ -47,7 +47,7 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
-          echo $GITHUB_WORKSPACE
+          echo ${{ github.workspace }}\$env:ALL_MODIFIED
 
 
       #- name: File List
