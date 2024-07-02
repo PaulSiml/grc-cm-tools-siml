@@ -47,12 +47,9 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
-          echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
-          echo $env:SELECTED_COLOR
-          echo SELECTED_COLOR
-          echo ${{ SELECTED_COLOR }}
-          echo $SELECTED_COLOR
-          echo ${{ $SELECTED_COLOR }}
+          echo "SELECTED_COLOR=green" >> $GITHUB_ENV
+      - name: Display Variable
+        run: echo "${{ env.SELECTED_COLOR }}"
    
 
       #- name: File List
