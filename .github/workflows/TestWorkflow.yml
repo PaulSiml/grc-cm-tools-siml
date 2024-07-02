@@ -47,9 +47,14 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
-          echo "SELECTED_COLOR=green" >> $GITHUB_ENV
+
+      - name: Create Variable
+        shell: bash
+        run: echo "action_state=yellow" >> $GITHUB_ENV
+
       - name: Display Variable
-        run: echo "${{ env.SELECTED_COLOR }}"
+        shell: bash
+        run : echo ${{ env.action_state }}
    
 
       #- name: File List
