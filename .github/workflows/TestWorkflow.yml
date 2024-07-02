@@ -47,6 +47,9 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
+          $str=$env:ALL_MODIFIED
+          $str=$str.Replace('/','\')
+          run: Add-Content -Path ${env:GITHUB_ENV} -Value "target_path=$str"
 
       - name: Create Variable
         #shell: bash
@@ -58,7 +61,7 @@ jobs:
         #shell: bash
         #run : echo ${{ env.action_state }}
         #shell: pwsh
-        run: echo "Action State is ${{ env.action_state }}"
+        run: echo "Action State is ${{ env.target_path }}"
    
 
       #- name: File List
