@@ -47,6 +47,8 @@ jobs:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
         run: |
           echo $env:ALL_MODIFIED
+          $str=$env:ALL_MODIFIED
+          Add-Content -Path ${env:GITHUB_ENV} -Value "action_state=$str"
 
       - name: Create Variable
         #shell: bash
@@ -54,7 +56,7 @@ jobs:
         #shell: pwsh
         run: |
           $str="green"
-          Add-Content -Path ${env:GITHUB_ENV} -Value "action_state=$str"
+          #Add-Content -Path ${env:GITHUB_ENV} -Value "action_state=$str"
 
       - name: Display Variable
         #shell: bash
