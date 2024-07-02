@@ -51,13 +51,13 @@ jobs:
       - name: Create Variable
         #shell: bash
         #run: echo "action_state=yellow" >> $GITHUB_ENV
-        shell: pwsh
+        #shell: pwsh
         run: Add-Content -Path ${env:GITHUB_ENV} -Value "action_state=red"
 
       - name: Display Variable
         #shell: bash
         #run : echo ${{ env.action_state }}
-        shell: pwsh
+        #shell: pwsh
         run: echo ${{ env.action_state }}"
    
 
