@@ -28,18 +28,27 @@ jobs:
         with:
           list-files: csv
           filters: |
-            allChanges:
+            deletedFiles:
               - deleted: 'src/**'
-
+            addedOrModified:
+            - added|modified: 'src/**'
           #- added|deleted|modified: 'src/**'
   
 
       # - if: steps.changes.outputs.src == 'true'
       #   run: echo "HIT"
-      - if: steps.changes.outputs.allChanges == 'true'
+      - if: steps.changes.outputs.deletedFiles == 'true'
         env:
-          ALL_FILES: ${{ steps.changes.outputs.allChanges_files }}
-        run: echo $env:ALL_FILES
+          ALL_DELETED: ${{ steps.changes.outputs.deletedFiles_files }}
+        run: echo $env:ALL_DELETED
+
+      - if: steps.changes.outputs.addedOrModified == 'true'
+        env:
+          ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
+        run: |
+          echo $env:ALL_MODIFIED
+          echo $GITHUB_WORKSPACE
+
 
       #- name: File List
       #  env:
