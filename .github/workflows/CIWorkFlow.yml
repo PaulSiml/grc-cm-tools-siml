@@ -23,6 +23,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      
+
       #- name: Extract Files RESTapi
       # run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
 
@@ -53,7 +55,14 @@ jobs:
           $paths=$str.Split(",")
           ForEach ($path in $paths) {
            echo "${{ github.workspace }}\$path"
+           #if (!(Test-Path -path "dist\$path")) {New-Item "dist\$path" -Type Directory}
+
+           #Copy-Item -Path "${{ github.workspace }}\$path" -Destination "dist\$path"
+
+           
+           New-item -Path (get-item "dist\$path").Directory.FullName -ItemType Directory
            Copy-Item -Path "${{ github.workspace }}\$path" -Destination "dist\$path"
+           
           }
           echo "done"
         
