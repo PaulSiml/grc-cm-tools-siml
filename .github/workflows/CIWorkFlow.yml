@@ -46,9 +46,12 @@ jobs:
           $str=$str.Replace('/','\')
           Add-Content -Path ${env:GITHUB_ENV} -Value "git_path=$str"
 
-      - name: Display Path
+      - name: Display File Paths
         run: |
           echo "${{ github.workspace }}\${{ env.git_path }}"
+          $str=${{ env.git_path }}
+          $paths=$str.Split(" ")
+          ForEach ($word in $str) { echo $word }
           # Copy-Item -Path '${{ github.workspace }}\${{ env.git_path }}' -Destination dist\src
         
     
