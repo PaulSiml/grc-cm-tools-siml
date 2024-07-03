@@ -1,4 +1,4 @@
 ROUTINE XPXSTSTD
 MAIN	
-	W !,"Hello Pima County,AZ"
+	W !,"Hello Pima County,AZ!"
 	Q
