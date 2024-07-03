@@ -53,7 +53,8 @@ jobs:
           $paths=$str.Split(",")
           ForEach ($path in $paths) {
            echo "${{ github.workspace }}\$path"
+           Copy-Item -Path '${{ github.workspace }}\$path' -Destination 'dist\$path'
           }
-          #Copy-Item -Path '${{ github.workspace }}\${{ env.git_path }}' -Destination dist\src
+          echo "done"
         
     
