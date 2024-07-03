@@ -56,19 +56,18 @@ jobs:
           ForEach ($path in $paths) {
            echo "${{ github.workspace }}\$path"
 
-           if (!(Test-Path "${{ github.workspace }}\$path")) { echo "Missing" }
-
+           #if (!(Test-Path "${{ github.workspace }}\$path")) { echo "Missing" }
            #if (!(Test-Path -path "dist\$path")) {New-Item "dist\$path" -Type Directory}
+           # create folder
+           New-Item -ItemType File -Path "dist\$path" -Force
 
-           #Copy-Item -Path "${{ github.workspace }}\$path" -Destination "dist\$path"
-
-           
-           #New-item -Path (get-item "dist\$path").Directory.FullName -ItemType Directory
-           #Copy-Item -Path "${{ github.workspace }}\$path" -Destination "dist\$path"
+           Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
+          
            
           }
-          Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
+          #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
           if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
+          if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
           echo "done"
         
     
