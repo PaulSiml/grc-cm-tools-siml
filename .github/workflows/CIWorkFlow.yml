@@ -48,10 +48,12 @@ jobs:
 
       - name: Display File Paths
         run: |
-          echo "${{ github.workspace }}\${{ env.git_path }}"
+          echo "${{ github.workspace }}"
           $str="${{ env.git_path }}"
           $paths=$str.Split(",")
-          ForEach ($path in $paths) { echo $path }
-          # Copy-Item -Path '${{ github.workspace }}\${{ env.git_path }}' -Destination dist\src
+          ForEach ($path in $paths) {
+           echo "${{ github.workspace }}\$path"
+          }
+          #Copy-Item -Path '${{ github.workspace }}\${{ env.git_path }}' -Destination dist\src
         
     
