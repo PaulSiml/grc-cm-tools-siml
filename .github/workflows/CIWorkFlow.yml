@@ -1,0 +1,52 @@
+name: CI Workflow
+on:
+  - workflow_dispatch
+  #- push
+env:
+  TARGET_DIRECTORY: 'D:\temp\siml'
+jobs:
+  job1:
+    runs-on: self-hosted
+    steps:
+      - name: Print Greeting
+        run: echo "Hello World"
+
+      - name: Kill Artifact Directory
+        run: if (Test-Path dist) { Remove-Item dist -Recurse -Force }
+
+      - name: Kill Target Directory
+        run: if (Test-Path $env:TARGET_DIRECTORY) { Remove-Item $env:TARGET_DIRECTORY -Recurse -Force }
+
+      - name: Make Artifact Directory
+        run: New-Item -Path 'dist\src' -ItemType Directory
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Extract Files RESTapi
+        run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
+
+      - name: Changed Files
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          list-files: csv
+          filters: |
+            deletedFiles:
+              - deleted: 'src/**'
+            addedOrModified:
+            - added|modified: 'src/**'
+
+      - if: steps.changes.outputs.addedOrModified == 'true'
+        env:
+          ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
+        run: |
+          echo $env:ALL_MODIFIED
+          $str=$env:ALL_MODIFIED
+          $str=$str.Replace('/','\')
+          Add-Content -Path ${env:GITHUB_ENV} -Value "git_path=$str"
+
+      - name: Display Path
+        run: echo "${{ github.workspace }}\${{ env.git_path }}"   
+        
+    
