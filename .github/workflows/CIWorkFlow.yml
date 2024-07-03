@@ -68,6 +68,7 @@ jobs:
            
           }
           Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
+          if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
           echo "done"
         
     
