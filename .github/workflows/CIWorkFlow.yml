@@ -1,7 +1,7 @@
 name: CI Workflow
 on:
   - workflow_dispatch
-  #- push
+  - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
 jobs:
@@ -47,6 +47,8 @@ jobs:
           Add-Content -Path ${env:GITHUB_ENV} -Value "git_path=$str"
 
       - name: Display Path
-        run: echo "${{ github.workspace }}\${{ env.git_path }}"   
+        run: |
+          echo "${{ github.workspace }}\${{ env.git_path }}"
+          # Copy-Item -Path '${{ github.workspace }}\${{ env.git_path }}' -Destination dist\src
         
     
