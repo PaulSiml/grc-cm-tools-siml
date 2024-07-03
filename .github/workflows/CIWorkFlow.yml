@@ -56,7 +56,7 @@ jobs:
           ForEach ($path in $paths) {
            echo "${{ github.workspace }}\$path"
 
-           if (!(Test-Path "${{ github.workspace }}\$path")) { echo "Missing" }
+           if (!(Test-Path "${{ github.workspace }}\test\$path")) { echo "Missing" }
 
            #if (!(Test-Path -path "dist\$path")) {New-Item "dist\$path" -Type Directory}
 
