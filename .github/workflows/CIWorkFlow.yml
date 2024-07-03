@@ -23,8 +23,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Extract Files RESTapi
-        run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
+      #- name: Extract Files RESTapi
+      # run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
 
       - name: Changed Files
         uses: dorny/paths-filter@v3
