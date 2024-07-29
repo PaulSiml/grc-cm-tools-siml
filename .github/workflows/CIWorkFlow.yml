@@ -62,7 +62,7 @@ jobs:
            New-Item -ItemType File -Path "dist\$path" -Force
 
            Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
-          
+           echo "target=> dist\$path"
            
           }
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
