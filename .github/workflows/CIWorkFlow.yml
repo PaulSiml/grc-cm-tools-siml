@@ -113,7 +113,7 @@ jobs:
 
 
       - name: Value
-        run: echo steps.myArtifact.outputs.num
+        run: echo ${{ steps.myArtifact.outputs.num }}
    
 
       #- name: Upload artifacts
