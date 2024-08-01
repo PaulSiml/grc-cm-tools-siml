@@ -4,6 +4,7 @@ on:
   - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
+  TODAY_DATE:
 
 jobs:
   job1:
@@ -11,6 +12,9 @@ jobs:
     steps:
       - name: Print Greeting
         run: echo "Hello World"
+
+      - name: Get Date
+        run : env.TODAY_DATE=Get-Date -Format "yyyyMMdd"
 
       - name: Kill Artifact Directory
         run: if (Test-Path dist) { Remove-Item dist -Recurse -Force }
@@ -43,7 +47,7 @@ jobs:
       - if: steps.changes.outputs.addedOrModified == 'true'
         env:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
-          TODAY_DATE: $ {{ Get-Date -Format "yyyyMMdd" }}
+          
         run: |
           echo $env:ALL_MODIFIED
           $str=$env:ALL_MODIFIED
