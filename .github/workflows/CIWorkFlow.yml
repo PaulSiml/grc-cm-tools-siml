@@ -115,7 +115,9 @@ jobs:
       - name: Value
         run: echo ${{ steps.myArtifact.outputs.num }}
    
-
+      - name: ValueAgain
+        run: echo ${{ steps.myArtifact.outputs.num }}
+        
       #- name: Upload artifacts
       #  if: steps.myArtifact.outputs.num == 'true' 
       #  uses: actions/upload-artifact@v4
