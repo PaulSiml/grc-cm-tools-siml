@@ -103,9 +103,9 @@ jobs:
 
       - name: Artifacts
         id: myArtifact
-        run: echo "num=(Test-Path 'dist')" >> $env:GITHUB_OUTPUT
+        run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
         
-      - if: steps.myArtifact.outputs.num == 1
+      - if: steps.myArtifact.outputs.num == 'true' 
 
         
         uses: actions/upload-artifact@v4
@@ -113,15 +113,18 @@ jobs:
           name: my-files
           path: dist
 
-      - if: steps.myArtifact.outputs.num == 1
+      - if: steps.myArtifact.outputs.num == 'true' 
         
         uses: actions/download-artifact@v4
         with:
           name: my-files
-          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\src   
+          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\src
+          
+      - if: steps.myArtifact.outputs.num == 'true' 
+        run: echo "true"
 
-      - if: steps.mytest.outputs.numa == 2
-        run: echo "two"
+      - if: steps.mytest.outputs.numa == 'false'
+        run: echo "false"
 
 
 
