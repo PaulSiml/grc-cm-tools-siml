@@ -16,6 +16,7 @@ jobs:
       - name: Get Date
         run : |
          $env:TODAY_DATE=Get-Date -Format "yyyyMMdd"
+         echo "Date => $env:TODAY_DATE"
 
       - name: Kill Artifact Directory
         run: if (Test-Path dist) { Remove-Item dist -Recurse -Force }
@@ -54,9 +55,6 @@ jobs:
           $str=$env:ALL_MODIFIED
           $str=$str.Replace('/','\')
           Add-Content -Path ${env:GITHUB_ENV} -Value "git_path=$str"
-
-      - name: Get Date
-        run: $date=Get-Date -Format "yyyyMMdd"
 
       - name: Display File Paths
         run: |
