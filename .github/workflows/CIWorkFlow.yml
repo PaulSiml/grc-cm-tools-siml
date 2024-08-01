@@ -17,11 +17,11 @@ jobs:
 
       - name: Hello World
         id: mytest
-        run:  echo "num=(9) % 2"
+        run:  echo "num=2" >> $env:GITHUB_OUTPUT
       - if: steps.mytest.outputs.num == 0
-        run: echo zero
-      - if: steps.mytest.outputs.num == 1
-        run: echo one
+        run: echo "zero"
+      - if: steps.mytest.outputs.num == 2
+        run: echo "two"
 
       - name: Get Date
         run : |
