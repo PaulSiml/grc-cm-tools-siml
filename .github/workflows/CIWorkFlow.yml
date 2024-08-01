@@ -9,9 +9,17 @@ env:
 jobs:
   job1:
     runs-on: self-hosted
+    outputs:
+      output1: ${{ steps.isArtifact.outputs.test }}
     steps:
       - name: Print Greeting
         run: echo "Hello World"
+
+      - name: Hello World
+        id: mytest
+        run:  echo "num=(Get-Random) % 2"
+      - if: steps.mytest.outputs.num == 0
+        run: echo zero
 
       - name: Get Date
         run : |
@@ -57,6 +65,7 @@ jobs:
           Add-Content -Path ${env:GITHUB_ENV} -Value "git_path=$str"
 
       - name: Display File Paths
+        id: isArtifact
         run: |
           echo "Workspace => ${{ github.workspace }}"
           
@@ -76,6 +85,7 @@ jobs:
             #echo "target=> dist\$path"
             
             }
+           
           }
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
           if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
@@ -88,6 +98,7 @@ jobs:
       #  with:
       #   files: dist
       #   dest: scr.zip
+   
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -100,4 +111,3 @@ jobs:
         with:
           name: my-files
           path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\src
-          
