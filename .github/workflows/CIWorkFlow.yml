@@ -103,7 +103,7 @@ jobs:
 
       - name: Artifacts
         id: myArtifact
-        run: echo "num=0" >> $env:GITHUB_OUTPUT
+        run: echo "num=(Test-Path "dist")" >> $env:GITHUB_OUTPUT
         
       - if: steps.myArtifact.outputs.num == 1
 
