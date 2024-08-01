@@ -14,7 +14,8 @@ jobs:
         run: echo "Hello World"
 
       - name: Get Date
-        run : env.TODAY_DATE=Get-Date -Format "yyyyMMdd"
+        run : |
+         $env:TODAY_DATE=Get-Date -Format "yyyyMMdd"
 
       - name: Kill Artifact Directory
         run: if (Test-Path dist) { Remove-Item dist -Recurse -Force }
