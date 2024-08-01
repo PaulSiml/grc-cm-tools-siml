@@ -4,6 +4,7 @@ on:
   - push
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
+
 jobs:
   job1:
     runs-on: self-hosted
@@ -42,11 +43,15 @@ jobs:
       - if: steps.changes.outputs.addedOrModified == 'true'
         env:
           ALL_MODIFIED: ${{ steps.changes.outputs.addedOrModified_files }}
+          TODAY_DATE: $ {{ Get-Date -Format "yyyyMMdd" }}
         run: |
           echo $env:ALL_MODIFIED
           $str=$env:ALL_MODIFIED
           $str=$str.Replace('/','\')
           Add-Content -Path ${env:GITHUB_ENV} -Value "git_path=$str"
+
+      - name: Get Date
+        run: $date=Get-Date -Format "yyyyMMdd"
 
       - name: Display File Paths
         run: |
