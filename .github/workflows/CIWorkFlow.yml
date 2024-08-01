@@ -104,37 +104,23 @@ jobs:
       - name: Artifacts
         id: myArtifact
         run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
-        
-      - if: steps.myArtifact.outputs.num == 'true' 
-
-        
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-files
-          path: dist
-
-      - if: steps.myArtifact.outputs.num == 'true' 
-        
-        uses: actions/download-artifact@v4
-        with:
-          name: my-files
-          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\src
           
       - if: steps.myArtifact.outputs.num == 'true' 
         run: echo "true"
 
-      - if: steps.mytest.outputs.numa == 'false'
+      - if: steps.myArtifact.outputs.num == 'false'
         run: echo "false"
 
 
 
    
 
-      #- name: Upload artifacts
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: my-files
-      #    path: dist
+      - name: Upload artifacts
+        if: steps.myArtifact.outputs.num == 'true' 
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-files
+          path: dist
 
       #- name: Download artifacts
       #  uses: actions/download-artifact@v4
