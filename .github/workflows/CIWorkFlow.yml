@@ -58,11 +58,13 @@ jobs:
 
       - name: Display File Paths
         run: |
-          echo "${{ github.workspace }}"
+          echo "Workspace => ${{ github.workspace }}"
+          
           $str="${{ env.git_path }}"
+          echo "str => $str"
           $paths=$str.Split(",")
           ForEach ($path in $paths) {
-           echo "${{ github.workspace }}\$path"
+           echo "Path => ${{ github.workspace }}\$path"
 
            #if (!(Test-Path "${{ github.workspace }}\$path")) { echo "Missing" }
            #if (!(Test-Path -path "dist\$path")) {New-Item "dist\$path" -Type Directory}
@@ -94,4 +96,4 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-files
-          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop
+          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\src\$env:TODAY_DATE
