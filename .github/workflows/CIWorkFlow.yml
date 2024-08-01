@@ -113,7 +113,7 @@ jobs:
 
 
       - name: Value
-        run: echo "num=> ${{ env.num }}"
+        run: echo "num=> ${{ env.GITHUB_OUTPUT }}"
    
 
       #- name: Upload artifacts
