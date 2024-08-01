@@ -103,8 +103,8 @@ jobs:
 
       - name: Artifacts
         id: myArtifact
-        run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
-          
+        #run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
+        run: echo "num=(2*2)" >> $env:GITHUB_OUTPUT  
       #- if: steps.myArtifact.outputs.num == 'true' 
       #  run: echo "true"
 
@@ -113,7 +113,7 @@ jobs:
 
 
       - name: Value
-        run: echo "num=> ${{ env.GITHUB_OUTPUT }}"
+        run: echo steps.myArtifact.outputs.num
    
 
       #- name: Upload artifacts
