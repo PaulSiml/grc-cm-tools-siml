@@ -20,6 +20,8 @@ jobs:
         run:  echo "num=(Get-Random) % 2"
       - if: steps.mytest.outputs.num == 0
         run: echo zero
+      - if: steps.mytest.outputs.num == 1
+        run: echo one
 
       - name: Get Date
         run : |
