@@ -61,7 +61,7 @@ jobs:
           echo "Workspace => ${{ github.workspace }}"
           
           $str="${{ env.git_path }}"
-          echo "str => $str.length"
+          echo "str => $str.Length"
           if ($str -eq "") {echo "str is null"}
           #if ($str -ne $Null) {
           #  $paths=$str.Split(",")
