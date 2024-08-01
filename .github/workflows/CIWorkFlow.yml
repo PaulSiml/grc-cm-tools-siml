@@ -17,7 +17,7 @@ jobs:
 
       - name: Hello World
         id: mytest
-        run:  echo "num=(Get-Random) % 2"
+        run:  echo "num=(9) % 2"
       - if: steps.mytest.outputs.num == 0
         run: echo zero
       - if: steps.mytest.outputs.num == 1
