@@ -62,21 +62,22 @@ jobs:
           
           $str="${{ env.git_path }}"
           echo "str => $str"
-          if ($str -ne $Null) {
-            $paths=$str.Split(",")
-            ForEach ($path in $paths) {
-            echo "Path => ${{ github.workspace }}\$path"
+          if ($str -eq $Null) {echo "str is null"}
+          #if ($str -ne $Null) {
+          #  $paths=$str.Split(",")
+          #  ForEach ($path in $paths) {
+          #  echo "Path => ${{ github.workspace }}\$path"
 
             #if (!(Test-Path "${{ github.workspace }}\$path")) { echo "Missing" }
             #if (!(Test-Path -path "dist\$path")) {New-Item "dist\$path" -Type Directory}
             # create folder
-            New-Item -ItemType File -Path "dist\$path" -Force
+            #New-Item -ItemType File -Path "dist\$path" -Force
 
-            Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
-            echo "target=> dist\$path"
+            #Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
+            #echo "target=> dist\$path"
             
-            }
-          }
+            #}
+          #}
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
           if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
           if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
