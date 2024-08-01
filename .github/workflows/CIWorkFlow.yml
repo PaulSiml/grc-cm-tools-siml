@@ -24,8 +24,8 @@ jobs:
       - name: Kill Target Directory
         run: if (Test-Path $env:TARGET_DIRECTORY) { Remove-Item $env:TARGET_DIRECTORY -Recurse -Force }
 
-      - name: Make Artifact Directory
-        run: New-Item -Path 'dist\src' -ItemType Directory
+      #- name: Make Artifact Directory
+      #  run: New-Item -Path 'dist\src' -ItemType Directory
 
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -94,6 +94,7 @@ jobs:
         with:
           name: my-files
           path: dist
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
