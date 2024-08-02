@@ -5,23 +5,24 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
+  ARTIFACT: false
 
 jobs:
   job1:
     runs-on: self-hosted
-    outputs:
-      output1: ${{ steps.isArtifact.outputs.test }}
+    #outputs:
+    #  output1: ${{ steps.isArtifact.outputs.test }}
     steps:
       - name: Print Greeting
         run: echo "Hello World"
 
-      - name: Hello World
-        id: mytest
-        run: echo "numa=2" >> $env:GITHUB_OUTPUT
-      - if: steps.mytest.outputs.numa == 0
-        run: echo "zero"
-      - if: steps.mytest.outputs.numa == 2
-        run: echo "two"
+      #- name: Hello World
+      #  id: mytest
+      #  run: echo "numa=2" >> $env:GITHUB_OUTPUT
+      #- if: steps.mytest.outputs.numa == 0
+      #  run: echo "zero"
+      #- if: steps.mytest.outputs.numa == 2
+      #  run: echo "two"
 
       - name: Get Date
         run : |
@@ -85,6 +86,8 @@ jobs:
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
+            $env.ARTIFACT=True
+
             
             }
            
@@ -101,10 +104,10 @@ jobs:
       #   files: dist
       #   dest: scr.zip
 
-      - name: Artifacts
-        id: myArtifact
-        #run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
-        run: echo "num=(Test-Path 'dist')" >> $env:GITHUB_OUTPUT  
+      #- name: Artifacts
+      #  id: myArtifact
+      #  #run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
+      #  run: echo "num=(Test-Path 'dist')" >> $env:GITHUB_OUTPUT  
       #- if: steps.myArtifact.outputs.num == 'true' 
       #  run: echo "true"
 
@@ -112,11 +115,11 @@ jobs:
       #  run: echo "false"
 
 
-      - name: Value
-        run: echo ${{ steps.myArtifact.outputs.num }}
+      #- name: Value
+      #  run: echo ${{ steps.myArtifact.outputs.num }}
    
-      - name: ValueAgain
-        run: echo ${{ steps.myArtifact.outputs.num }}
+      #- name: ValueAgain
+      #  run: echo ${{ steps.myArtifact.outputs.num }}
 
       #- if: steps.myArtifact.outputs.num == 'True'
       #  uses: actions/upload-artifact@v4
@@ -124,12 +127,14 @@ jobs:
       #    name: my-files
       #    path: dist
       
-        
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-         name: my-files
-         path: dist
+        run: echo  "ARTIFACT => ${{ env:ARTIFACT }}""
+      #- name: Upload artifacts
+      #  if: ${{ env:ARTIFACT == true }}
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #   name: my-files
+      #   path: dist
 
       #- name: Download artifacts
       #  uses: actions/download-artifact@v4
