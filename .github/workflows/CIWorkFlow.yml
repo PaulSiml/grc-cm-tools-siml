@@ -5,7 +5,7 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
-  AFLAG: 0
+  NEWFLAG: 0
 
 jobs:
   job1:
@@ -73,7 +73,7 @@ jobs:
           echo "Workspace => ${{ github.workspace }}"
           
           $str="${{ env.git_path }}"
-          echo "NEWFLAG=0" >> $env:GITHUB_ENV
+          
           if ($str -ne "") {
             $paths=$str.Split(",")
             ForEach ($path in $paths) {
@@ -86,11 +86,11 @@ jobs:
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
-            $env:AFLAG=1
-            echo "Loop AFLAG => $env:AFLAG"
+            
             echo "NEWFLAG=1" >> $env:GITHUB_ENV
+            
             }
-            echo "Out Of Loop AFLAG => $env:AFLAG"
+            
             
           }
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
@@ -127,7 +127,7 @@ jobs:
       #  with:
       #    name: my-files
       #    path: dist
-      
+
       
       - name: Upload artifacts
         run:  echo "NEWFLAG => $env:NEWFLAG"
