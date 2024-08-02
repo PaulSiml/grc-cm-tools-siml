@@ -5,7 +5,7 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
-  NEWFLAG: false
+  NEWFLAG: 0
 
 jobs:
   job1:
@@ -87,7 +87,7 @@ jobs:
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
             
-            echo "NEWFLAG=true" >> $env:GITHUB_ENV
+            echo "NEWFLAG=1" >> $env:GITHUB_ENV
             
             }
             
@@ -133,11 +133,13 @@ jobs:
         run:  echo "NEWFLAG => $env:NEWFLAG"
 
       - name: Upload artifacts
-        if: ${{ env.NEWFLAG == true }}
+        if: ${{ env.NEWFLAG == 1 }}
         uses: actions/upload-artifact@v4
+        
         with:
           name: my-files
           path: dist
+         
 
       #- name: Download artifacts
       #  uses: actions/download-artifact@v4
