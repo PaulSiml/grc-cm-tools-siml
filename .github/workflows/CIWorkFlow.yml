@@ -5,7 +5,7 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
-  NEWFLAG: 0
+  NEWFLAG: false
 
 jobs:
   job1:
@@ -87,7 +87,7 @@ jobs:
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
             
-            echo "NEWFLAG=1" >> $env:GITHUB_ENV
+            echo "NEWFLAG=true" >> $env:GITHUB_ENV
             
             }
             
