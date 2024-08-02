@@ -86,7 +86,7 @@ jobs:
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
-            $env.AFLAG=1
+            #$env.AFLAG=1
 
             
             }
@@ -128,10 +128,10 @@ jobs:
       #    path: dist
       
       - name: Upload artifacts
-        run: echo  "MY_FLAG => ${{ env:AFLAG }}"
+        run: echo "AFLAG => ${{ env:AFLAG }}"
 
       #- name: Upload artifacts
-      #  if: ${{ env:ARTIFACT == true }}
+      #  if: ${{ env:AFLAG == true }}
       #  uses: actions/upload-artifact@v4
       #  with:
       #   name: my-files
