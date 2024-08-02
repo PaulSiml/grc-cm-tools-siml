@@ -96,8 +96,8 @@ jobs:
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
           if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
           if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
-          echo "Done AFLAG => $env:AFLAG"
-          #echo "AFLAG=1" >> $GITHUB_OUTPUT      
+          
+               
           
       #- name: zipmyfiles
      
@@ -132,12 +132,12 @@ jobs:
       - name: Upload artifacts
         run:  echo "NEWFLAG => $env:NEWFLAG"
 
-      #- name: Upload artifacts
-      #  if: ${{ env:AFLAG == true }}
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #   name: my-files
-      #   path: dist
+      - name: Upload artifacts
+        if: ${{ env.NEWFLAG == true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-files
+          path: dist
 
       #- name: Download artifacts
       #  uses: actions/download-artifact@v4
