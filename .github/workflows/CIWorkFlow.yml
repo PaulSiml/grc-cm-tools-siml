@@ -87,15 +87,15 @@ jobs:
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
             $env:AFLAG=1
-
+            echo "Loop AFLAG => $env:AFLAG"
             
             }
-           
+            echo "Out Of Loop AFLAG => $env:AFLAG"
           }
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
           if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
           if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
-          echo "done"
+          echo "Done AFLAG => $env:AFLAG"
       
       #- name: zipmyfiles
      
