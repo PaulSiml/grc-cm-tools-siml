@@ -129,7 +129,7 @@ jobs:
       #    path: dist
       
       - name: Upload artifacts
-        run: echo "AFLAG => $env:AFLAG"
+        run: echo ${{ env:AFLAG  }}
 
       #- name: Upload artifacts
       #  if: ${{ env:AFLAG == true }}
