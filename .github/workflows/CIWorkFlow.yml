@@ -86,7 +86,7 @@ jobs:
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
-            #$env.MY_FLAG=True
+            $env.AFLAG=1
 
             
             }
@@ -127,8 +127,8 @@ jobs:
       #    name: my-files
       #    path: dist
       
-      #- name: Upload artifacts
-      #  run: echo  "MY_FLAG => ${{ env:MY_FLAG }}"
+      - name: Upload artifacts
+        run: echo  "MY_FLAG => ${{ env:AFLAG }}"
 
       #- name: Upload artifacts
       #  if: ${{ env:ARTIFACT == true }}
