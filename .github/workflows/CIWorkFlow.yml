@@ -115,7 +115,6 @@ jobs:
       #- if: steps.myArtifact.outputs.num == 'false'
       #  run: echo "false"
 
-
       #- name: Value
       #  run: echo ${{ steps.myArtifact.outputs.num }}
    
