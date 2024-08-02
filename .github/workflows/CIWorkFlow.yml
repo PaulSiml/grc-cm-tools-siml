@@ -5,7 +5,7 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
-  ARTIFACT: false
+  MY_ARTIFACT: false
 
 jobs:
   job1:
@@ -128,7 +128,7 @@ jobs:
       #    path: dist
       
       - name: Upload artifacts
-        run: echo  "ARTIFACT => ${{ env:ARTIFACT }}""
+        run: echo  "MY_ARTIFACT => ${{ env:MY_ARTIFACT }}"
       #- name: Upload artifacts
       #  if: ${{ env:ARTIFACT == true }}
       #  uses: actions/upload-artifact@v4
