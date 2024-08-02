@@ -86,7 +86,7 @@ jobs:
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
-            #$env:AFLAG=1
+            $env:AFLAG=1
 
             
             }
