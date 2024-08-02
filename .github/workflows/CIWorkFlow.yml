@@ -96,7 +96,7 @@ jobs:
           if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
           if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
           echo "Done AFLAG => $env:AFLAG"
-          echo "$env:AFLAG=1" >> $GITHUB_OUTPUT
+          echo "AFLAG=1" >> $GITHUB_OUTPUT
       #- name: zipmyfiles
      
       #  uses: vimtor/action-zip@v1.2
