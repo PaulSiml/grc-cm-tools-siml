@@ -10,20 +10,10 @@ env:
 jobs:
   job1:
     runs-on: self-hosted
-    #outputs:
-    #  output1: ${{ steps.isArtifact.outputs.test }}
     steps:
       - name: Print Greeting
         run: echo "Hello World"
-
-      #- name: Hello World
-      #  id: mytest
-      #  run: echo "numa=2" >> $env:GITHUB_OUTPUT
-      #- if: steps.mytest.outputs.numa == 0
-      #  run: echo "zero"
-      #- if: steps.mytest.outputs.numa == 2
-      #  run: echo "two"
-
+      
       - name: Get Date
         run : |
          $env:TODAY_DATE=Get-Date -Format "yyyyMMdd"
@@ -35,17 +25,9 @@ jobs:
       - name: Kill Target Directory
         run: if (Test-Path $env:TARGET_DIRECTORY) { Remove-Item $env:TARGET_DIRECTORY -Recurse -Force }
 
-      #- name: Make Artifact Directory
-      #  run: New-Item -Path 'dist\src' -ItemType Directory
-
       - name: Checkout Repo
         uses: actions/checkout@v4
-
-      
-
-      #- name: Extract Files RESTapi
-      # run: Copy-Item -Path 'D:\temp\XPXSTST.MAC' -Destination dist\src
-
+   
       - name: Changed Files
         uses: dorny/paths-filter@v3
         id: changes
@@ -72,21 +54,19 @@ jobs:
         run: |
           echo "Workspace => ${{ github.workspace }}"
           
-          $str="${{ env.git_path }}"
+          #$str="${{ env.git_path }}"
+          $str=env:git_path
           
           if ($str -ne "") {
             $paths=$str.Split(",")
+
             ForEach ($path in $paths) {
             echo "Path => ${{ github.workspace }}\$path"
 
-            #if (!(Test-Path "${{ github.workspace }}\$path")) { echo "Missing" }
-            #if (!(Test-Path -path "dist\$path")) {New-Item "dist\$path" -Type Directory}
             # create folder
             New-Item -ItemType File -Path "dist\$path" -Force
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
-            #echo "target=> dist\$path"
-            
             echo "NEWFLAG=1" >> $env:GITHUB_ENV
             
             }
@@ -94,40 +74,8 @@ jobs:
             
           }
           #Copy-Item "${{ github.workspace }}\src" dist\src -Recurse
-          if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
-          if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
-          
-               
-          
-      #- name: zipmyfiles
-     
-      #  uses: vimtor/action-zip@v1.2
-      #  with:
-      #   files: dist
-      #   dest: scr.zip
-
-      #- name: Artifacts
-      #  id: myArtifact
-      #  #run: echo "num=(Test-Path dist)" >> $env:GITHUB_OUTPUT
-      #  run: echo "num=(Test-Path 'dist')" >> $env:GITHUB_OUTPUT  
-      #- if: steps.myArtifact.outputs.num == 'true' 
-      #  run: echo "true"
-
-      #- if: steps.myArtifact.outputs.num == 'false'
-      #  run: echo "false"
-
-      #- name: Value
-      #  run: echo ${{ steps.myArtifact.outputs.num }}
-   
-      #- name: ValueAgain
-      #  run: echo ${{ steps.myArtifact.outputs.num }}
-
-      #- if: steps.myArtifact.outputs.num == 'True'
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: my-files
-      #    path: dist
-
+          #if ((Test-Path "dist\src\mac\XPXSTSTA.MAC")) { echo "XPXSTSTA.MAC PRESENT" }
+          #if ((Test-Path "dist\src\mac\XPXSTSTD.MAC")) { echo "XPXSTSTD.MAC PRESENT" }
       
       - name: Artifact Flag
         run:  echo "NEWFLAG => $env:NEWFLAG"
@@ -139,10 +87,10 @@ jobs:
           name: my-files
           path: dist
 
-      - name: Date
-        run:  |
-          echo "NEWFLAG => $env:TODAY_DATE"
-          echo "NEWFLAG => ${{ env.TODAY_DATE }}"
+      #- name: Date
+      #  run:  |
+      #    echo "DATE => $env:TODAY_DATE"
+      #    echo "DATE => ${{ env.TODAY_DATE }}"
          
       - name: Download artifacts
         if: ${{ env.NEWFLAG == 1 }}
