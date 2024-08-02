@@ -5,7 +5,7 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
-  #MY_FLAG: 'false'
+  AFLAG: 0
 
 jobs:
   job1:
@@ -129,7 +129,7 @@ jobs:
       
       #- name: Upload artifacts
       #  run: echo  "MY_FLAG => ${{ env:MY_FLAG }}"
-      
+
       #- name: Upload artifacts
       #  if: ${{ env:ARTIFACT == true }}
       #  uses: actions/upload-artifact@v4
