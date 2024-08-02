@@ -5,7 +5,7 @@ on:
 env:
   TARGET_DIRECTORY: 'D:\temp\siml'
   TODAY_DATE:
-  MY_FLAG: 'false'
+  #MY_FLAG: 'false'
 
 jobs:
   job1:
@@ -86,7 +86,7 @@ jobs:
 
             Copy-Item "${{ github.workspace }}\$path" "dist\$path" -Force
             #echo "target=> dist\$path"
-            $env.MY_FLAG=True
+            #$env.MY_FLAG=True
 
             
             }
@@ -127,8 +127,9 @@ jobs:
       #    name: my-files
       #    path: dist
       
-      - name: Upload artifacts
-        run: echo  "MY_FLAG => ${{ env:MY_FLAG }}"
+      #- name: Upload artifacts
+      #  run: echo  "MY_FLAG => ${{ env:MY_FLAG }}"
+      
       #- name: Upload artifacts
       #  if: ${{ env:ARTIFACT == true }}
       #  uses: actions/upload-artifact@v4
