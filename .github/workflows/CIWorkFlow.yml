@@ -54,8 +54,8 @@ jobs:
         run: |
           echo "Workspace => ${{ github.workspace }}"
           
-          #$str="${{ env.git_path }}"
-          $str=env:git_path
+          $str="${{ env.git_path }}"
+          
           
           if ($str -ne "") {
             $paths=$str.Split(",")
