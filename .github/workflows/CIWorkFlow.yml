@@ -129,7 +129,7 @@ jobs:
       #    path: dist
 
       
-      - name: Upload artifacts
+      - name: Artifact Flag
         run:  echo "NEWFLAG => $env:NEWFLAG"
 
       - name: Upload artifacts
