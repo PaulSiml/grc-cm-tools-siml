@@ -138,10 +138,15 @@ jobs:
         with:
           name: my-files
           path: dist
+
+      - name: Date
+        run:  |
+          echo "NEWFLAG => $env:TODAY_DATE"
+          echo "NEWFLAG => ${{ env.TODAY_DATE }}"
          
       - name: Download artifacts
         if: ${{ env.NEWFLAG == 1 }}
         uses: actions/download-artifact@v4
         with:
           name: my-files
-          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop\src\${{ env.TODAY_DATE }}
+          path: D:\temp\GitHub_Build\${{ github.workflow }}\${{ github.run_id }}\drop
